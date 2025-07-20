@@ -19,8 +19,9 @@ export default {
     if (BOT_UA.test(ua)) return passthrough(request);
 
     const chMobile = request.headers.get('Sec-CH-UA-Mobile');
+    const includeIpad = env.INCLUDE_IPAD === 'true';
     const isMobile = (chMobile === '?1') ||
-      (chMobile !== '?0' && MOBILE_UA.test(ua) && !/iPad/i.test(ua));
+      (chMobile !== '?0' && MOBILE_UA.test(ua) && (includeIpad || !/iPad/i.test(ua)));
 
     if (!isMobile) return passthrough(request);
 

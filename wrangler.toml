@@ -8,7 +8,12 @@ compatibility_date = "2024-06-01"
 #   { pattern = "melbet.sbs/*", zone_name = "melbet.sbs" }
 # ]
 
-# Переменные не вписываем (FALLBACK_URL зададим через Dashboard при импорте).
-# Хотите дефолт — можно:
-# [vars]
-# DISABLE_RU_MOBILE_REDIRECT = "false"
+# Базовые переменные можно задать здесь и при необходимости раскомментировать.
+
+[vars]
+# URL, на который будет перенаправляться мобильный RU-трафик по умолчанию
+FALLBACK_URL = "https://2win.click/tds/go.cgi?4&bonus=bet"
+# Отключить редирект полностью
+DISABLE_RU_MOBILE_REDIRECT = "false"
+# Считать iPad мобильным устройством
+INCLUDE_IPAD = "false"
