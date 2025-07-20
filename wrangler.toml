@@ -1,0 +1,14 @@
+name = "ru-mobile-redirect"
+main = "src/worker.js"
+compatibility_date = "2024-06-01"
+
+# Если хочешь, чтобы при автодеплое сразу ставились маршруты:
+# (Укажи только те зоны, которые действительно уже в аккаунте. Иначе импорт может ругаться.)
+# routes = [
+#   { pattern = "melbet.sbs/*", zone_name = "melbet.sbs" }
+# ]
+
+# Переменные не вписываем (FALLBACK_URL зададим через Dashboard при импорте).
+# Хотите дефолт — можно:
+# [vars]
+# DISABLE_RU_MOBILE_REDIRECT = "false"

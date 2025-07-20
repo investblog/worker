@@ -1,26 +1,29 @@
 # RU Mobile Redirect Worker
 
-This repository provides a small utility for Cloudflare Workers that redirects
-mobile visitors from Russia to a fallback URL.
+Этот репозиторий содержит пример Cloudflare Worker, который перенаправляет только мобильный трафик из России на указанный fallback URL. Все остальные запросы проходят напрямую.
 
-## Usage
+## Быстрый старт
 
-Install as an npm dependency or copy `worker.js` into your Worker project.
+1. Склонируйте репозиторий и установите зависимости (опционально для локальной разработки):
+
+   ```bash
+   npm install
+   ```
+
+2. Укажите переменную `FALLBACK_URL` при создании Worker через Cloudflare Dashboard.
+3. (Опционально) задайте `DISABLE_RU_MOBILE_REDIRECT=true`, чтобы временно отключить редирект.
+4. Добавьте маршруты вида `domain/*` в настройках Worker.
+
+Для локального запуска используйте:
 
 ```bash
-npm install <path-to-this-repo>
+npm run dev
 ```
 
-Import the handler and use it in your Cloudflare Worker:
+Деплой осуществляется командой:
 
-```javascript
-import { redirectRuMobile } from 'ru-mobile-redirect/worker';
-
-export default {
-  fetch: redirectRuMobile
-};
+```bash
+npm run deploy
 ```
 
-The redirect destination is defined through the `FALLBACK_URL` environment
-variable.
-
+Worker размещён в `src/worker.js`. Его можно легко расширить для поддержки нескольких доменов и разных fallback-адресов.
