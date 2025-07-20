@@ -3,8 +3,14 @@
 const BOT_UA = /\b(googlebot|bingbot|yandex(bot|images)|duckduckbot|baiduspider|slurp|mail\.ru_bot|applebot|facebookexternalhit|twitterbot|discordbot|telegrambot)\b/i;
 const MOBILE_UA = /\b(android|iphone|ipod|windows phone|opera mini|opera mobi|blackberry|bb10|silk\/|kindle|webos|iemobile)\b/i;
 
-export default {
-  async fetch(request, env) {
+/**
+ * Handler for Cloudflare Workers to redirect RU mobile traffic.
+ *
+ * @param {Request} request Incoming request object
+ * @param {Record<string, string>} env Environment bindings
+ * @returns {Promise<Response>}
+ */
+export async function redirectRuMobile(request, env) {
     const url = new URL(request.url);
 
     /* 1. страна: RU */
@@ -43,5 +49,8 @@ export default {
         'X-Edge-Redirect': 'ru-mobile'
       }
     });
-  }
+}
+
+export default {
+  fetch: redirectRuMobile
 };

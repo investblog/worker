@@ -1,0 +1,13 @@
+{
+  "name": "ru-mobile-redirect",
+  "version": "0.1.0",
+  "description": "Redirect Russian mobile traffic in Cloudflare Workers",
+  "type": "module",
+  "main": "worker.js",
+  "exports": {
+    "./worker": "./worker.js"
+  },
+  "keywords": ["cloudflare", "worker", "redirect"],
+  "author": "",
+  "license": "MIT"
+}
