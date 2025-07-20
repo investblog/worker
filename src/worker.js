@@ -12,11 +12,20 @@ export default {
       return fetch(request);
     }
 
+    if (request.method !== 'GET' && request.method !== 'HEAD') {
+      return passthrough(request);
+    }
+
     const country = (request.cf?.country || '').toUpperCase();
     if (country !== 'RU') return passthrough(request);
 
     const ua = request.headers.get('User-Agent') || '';
     if (BOT_UA.test(ua)) return passthrough(request);
+
+    const h = request.headers;
+    if (h.get('Sec-Fetch-Dest') !== 'document') return passthrough(request);
+    if (!(h.get('Accept') || '').includes('text/html')) return passthrough(request);
+    if (h.get('Upgrade-Insecure-Requests') !== '1') return passthrough(request);
 
     const chMobile = request.headers.get('Sec-CH-UA-Mobile');
     const includeIpad = env.INCLUDE_IPAD === 'true';
