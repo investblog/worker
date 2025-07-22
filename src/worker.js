@@ -17,7 +17,8 @@ export default {
     }
 
     const country = (request.cf?.country || '').toUpperCase();
-    if (country !== 'RU') return passthrough(request);
+    const target = (env.REDIRECT_COUNTRY || 'RU').toUpperCase();
+    if (country !== target) return passthrough(request);
 
     const ua = request.headers.get('User-Agent') || '';
     if (BOT_UA.test(ua)) return passthrough(request);

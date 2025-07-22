@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.0] - 2025-07-22
+### Added
+- Configurable `REDIRECT_COUNTRY` environment variable to choose which country is redirected.
+
 ## [0.2.0] - 2024-06-05
 ### Added
 - Additional bot detection using `Sec-Fetch` headers and HTML Accept check.
