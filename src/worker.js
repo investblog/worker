@@ -1,6 +1,6 @@
 const BOT_UA = /\b(googlebot|bingbot|yandex(bot|images)|duckduckbot|baiduspider|slurp|mail\.ru_bot|applebot|facebookexternalhit|twitterbot|discordbot|telegrambot)\b/i;
 const BOT_ASN = new Set([15169, 8075, 13238, 32934, 16509, 14618]);
-const MOBILE_UA = /\b(android|iphone|ipod|windows phone|opera mini|opera mobi|blackberry|bb10|silk\/|kindle|webos|iemobile)\b/i;
+const MOBILE_UA = /\b(android|iphone|ipod|windows phone|opera mini|opera mobi|blackberry|bb10|silk\/|kindle|webos|iemobile|samsungbrowser|miuibrowser|miui|huawei|oppo|oneplus|vivo|realme|poco|ucbrowser|crios|fxios|edgios)\b/i;
 
 export default {
   async fetch(request, env) {
