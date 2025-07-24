@@ -1,4 +1,4 @@
-const BOT_UA = /\b(?:adsbot-google|mediapartners-google|feedfetcher-google|googlebot(?:[-_ ]?(?:image|video|news))?|google(?: web)?preview|bingbot|msnbot|bingpreview|yandex(?:bot|images|direct|video|mobilebot)?|baiduspider|slurp|duckduckbot|mail\.ru_bot|applebot|facebookexternalhit|twitterbot|discordbot|telegrambot)\b/i;
+const BOT_UA = /\b(?:adsbot-google(?:-mobile)?|mediapartners-google|feedfetcher-google|googlebot(?:[-_ ]?(?:image|video|news|mobile))?|google(?: web)?preview|bingbot|msnbot|bingpreview|yandex(?:bot|images|direct|video|mobilebot)?|baiduspider|slurp|duckduckbot|mail\.ru_bot|applebot|petalbot|facebookexternalhit|twitterbot|discordbot|telegrambot|slackbot|linkedinbot)\b/i;
 const BOT_ASN = new Set([15169, 8075, 13238, 32934, 16509, 14618]);
 const MOBILE_UA = /\b(android|iphone|ipod|windows phone|opera mini|opera mobi|blackberry|bb10|silk\/|kindle|webos|iemobile|samsungbrowser|miuibrowser|miui|huawei|oppo|oneplus|vivo|realme|poco|ucbrowser|crios|fxios|edgios)\b/i;
 
