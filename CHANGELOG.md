@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.6.0] - 2025-07-24
+### Added
+- Improved bot detection: added patterns for Google Mobile, PetalBot and common social scrapers.
+
 ## [0.5.0] - 2025-07-24
 ### Added
 - Broader mobile UA detection including Samsung, MIUI, Huawei and other popular devices.
