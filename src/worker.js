@@ -4,12 +4,12 @@ const MOBILE_UA = /\b(android|iphone|ipod|windows phone|opera mini|opera mobi|bl
 
 export default {
   async fetch(request, env) {
-    if (env.DISABLE_RU_MOBILE_REDIRECT === 'true') {
+    if (env.DISABLE_MOBILE_REDIRECT === 'true') {
       return fetch(request);
     }
 
     const url = new URL(request.url);
-    if (url.searchParams.has('_ruredir')) {
+    if (url.searchParams.has('_georedir')) {
       return fetch(request);
     }
 
@@ -29,7 +29,8 @@ export default {
     const h = request.headers;
     if (h.get('Sec-Fetch-Dest') !== 'document') return passthrough(request);
     if (!(h.get('Accept') || '').includes('text/html')) return passthrough(request);
-    if (h.get('Upgrade-Insecure-Requests') !== '1') return passthrough(request);
+    const uir = h.get('Upgrade-Insecure-Requests');
+    if (uir === '0') return passthrough(request);
 
     const chMobile = request.headers.get('Sec-CH-UA-Mobile');
     const includeIpad = env.INCLUDE_IPAD === 'true';
@@ -47,7 +48,7 @@ export default {
     }
 
     const r = new URL(fb);
-    if (!r.searchParams.has('_ruredir')) r.searchParams.set('_ruredir', '1');
+    if (!r.searchParams.has('_georedir')) r.searchParams.set('_georedir', '1');
 
     return new Response('Redirect\n', {
       status: 302,
@@ -55,7 +56,7 @@ export default {
         Location: r.toString(),
         'Cache-Control': 'public, max-age=300',
         'Content-Type': 'text/plain; charset=utf-8',
-        'X-Edge-Redirect': 'ru-mobile',
+        'X-Edge-Redirect': 'geo-mobile',
         Connection: 'close'
       }
     });
